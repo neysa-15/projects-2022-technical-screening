@@ -32,6 +32,7 @@ var assert = require("assert")
 
 const altNumbers = (numArray) => {
     // TODO: COMPLETE THIS FUNCTION
+    
     return [];
 }
 
