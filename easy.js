@@ -30,10 +30,46 @@ var assert = require("assert")
 // Output numArray: []
 // Explanation: Empty array...
 
+const fillArray = (numArray, resArray, positionPos, positionNeg) => {
+    for (var j = 0; j < numArray.length; j++) {
+        if (numArray[j] < 0) {
+            resArray[positionNeg] = numArray[j];
+            positionNeg = positionNeg + 2;
+        } else {
+            resArray[positionPos] = numArray[j];
+            positionPos = positionPos + 2;
+        }
+    } 
+    return resArray;
+}
+
 const altNumbers = (numArray) => {
-    // TODO: COMPLETE THIS FUNCTION
-    
-    return [];
+
+    // count both positive and negative numbers
+    var nNeg = 0;
+    var nPos = 0;
+    for (var i = 0; i < numArray.length; i++) {
+        if (numArray[i] < 0) {
+            nNeg++;
+        } else {
+            nPos++;
+        }
+    }
+
+    // if count positive > negative, first number would be positive
+    // if count positive < negative, first number would be negative
+    var resArray = [];
+    if (nPos > nNeg) {
+        var positionPos = 0;
+        var positionNeg = 1;
+        resArray = fillArray(numArray, resArray, positionPos, positionNeg)
+    } else {
+        var positionNeg = 0;
+        var positionPos = 1;
+        resArray = fillArray(numArray, resArray, positionPos, positionNeg)
+    }
+
+    return resArray;
 }
 
 module.exports = { altNumbers } // Do not modify this line
